@@ -1,0 +1,28 @@
+# Uploads/documents directory - Allow documents only, block everything else
+
+# Allow document files
+<FilesMatch "\.(pdf|doc|docx|xls|xlsx|ppt|pptx|txt|rtf|odt|ods|odp)$">
+    Require all granted
+</FilesMatch>
+
+# Block PHP and all executable files
+<FilesMatch "\.(php|phtml|php3|php4|php5|phps|phar|exe|bin|bat|sh|pl|py)$">
+    Require all denied
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# Set proper MIME types
+AddType application/pdf .pdf
+AddType application/msword .doc
+AddType application/vnd.openxmlformats-officedocument.wordprocessingml.document .docx
+AddType application/vnd.ms-excel .xls
+AddType application/vnd.openxmlformats-officedocument.spreadsheetml.sheet .xlsx
+AddType text/plain .txt
+
+# Force download for office documents
+<FilesMatch "\.(doc|docx|xls|xlsx|ppt|pptx)$">
+    ForceType application/octet-stream
+    Header set Content-Disposition attachment
+</FilesMatch>

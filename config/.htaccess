@@ -1,0 +1,20 @@
+# Config directory security - Block ALL access
+# This folder contains sensitive configuration files
+
+# Deny all access to this directory
+Require all denied
+
+# Alternative syntax for older Apache versions
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>
+
+# Prevent any file execution
+<FilesMatch ".*">
+    Require all denied
+</FilesMatch>
