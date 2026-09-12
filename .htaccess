@@ -1,28 +1,45 @@
-# WebHub.uz - Apache Security va URL Rewriting
+# WebHub.uz - LiteSpeed & Apache Compatible Security Configuration
+# Optimized to prevent 403 errors and work on any hosting
 
-# Server signature yashirish
+# Disable directory listing
+Options -Indexes +FollowSymLinks
+
+# Server signature
 ServerSignature Off
 TraceEnable Off
 
-# HTTPS ga majburlash (SSL mavjud bo'lsa)
+# Default charset
+AddDefaultCharset UTF-8
+
+# DirectoryIndex - prioritize index.php
+DirectoryIndex index.php index.html index.htm
+
+# Enable Rewrite Engine
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    
-    # HTTPS redirect (production da yoqing)
-    # RewriteCond %{HTTPS} off
-    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-    
-    # www ni olib tashlash (ixtiyoriy)
-    # RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-    # RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
-    
-    # Fayl yoki papka mavjud bo'lmasa, index.php ga yo'naltirish
+    RewriteBase /
+
+    # Redirect to installer if config.php doesn't exist
+    RewriteCond %{REQUEST_URI} !^/install\.php$ [NC]
+    RewriteCond %{REQUEST_URI} !^/assets/ [NC]
+    RewriteCond %{REQUEST_URI} !^/uploads/ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond ! -f %{DOCUMENT_ROOT}/config/config.php
+    RewriteRule ^.*$ /install.php [L,R=302]
+
+    # Route all requests to index.php if file/directory doesn't exist
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php [QSA,L]
 </IfModule>
 
-# Xavfsizlik headerlari
+# Fallback for servers without mod_rewrite
+<IfModule !mod_rewrite.c>
+    DirectoryIndex index.php index.html index.htm
+</IfModule>
+
+# Security Headers
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
     Header set X-Frame-Options "SAMEORIGIN"
@@ -31,14 +48,32 @@ TraceEnable Off
     Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
 
-# PHP xatoliklarini yashirish
-php_flag display_errors Off
-php_value error_log /var/log/php_errors.log
+# PHP Settings
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 300
+</IfModule>
 
-# Uploads papkasida PHP ishlamasligi
+# LiteSpeed specific settings
+<IfModule mod_lsapi.c>
+    php_flag register_globals Off
+</IfModule>
+
+# Block access to sensitive files
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(config\.php|\.sql|\.log|\.ini|\.env)$">
+    Require all denied
+</FilesMatch>
+
+# Block PHP execution in uploads directory
 <FilesMatch "\.(php|phtml|php3|php4|php5|phps)$">
-    Order Allow,Deny
-    Deny from all
+    Require all denied
 </FilesMatch>
 
 # Gzip compression
@@ -56,5 +91,4 @@ php_value error_log /var/log/php_errors.log
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType application/x-javascript "access plus 1 month"
 </IfModule>

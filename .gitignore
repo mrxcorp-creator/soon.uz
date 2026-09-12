@@ -1,32 +1,7 @@
-```gitignore
-# Compiled and build artifacts
-*.pyc
-__pycache__/
+```
+# Apache server configuration
+.htaccess
 
-# Dependencies
-vendor/
-node_modules/
-composer.lock
-
-# Environment
-.env
-.env.local
-.env.*
-
-# Logs and temp files
-*.log
-*.tmp
-
-# Editors
-.vscode/
-.idea/
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Build and distribution
-dist/
-build/
-target/
+# Uploaded content
+uploads/
 ```

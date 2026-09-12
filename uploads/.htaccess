@@ -1,5 +1,20 @@
-# Prevent PHP execution in uploads directory
-<FilesMatch "\.(php|php5|phtml)$">
-    Order deny,allow
-    Deny from all
+# Uploads directory security - Block PHP execution
+# This prevents malicious PHP files from running if uploaded
+
+# Disable PHP execution
+<FilesMatch "\.(php|phtml|php3|php4|php5|phps|phar)$">
+    Require all denied
+</FilesMatch>
+
+# Disable script execution in general
+RemoveHandler .php .phtml .php3 .php4 .php5 .phps .phar
+RemoveType .php .phtml .php3 .php4 .php5 .phps .phar
+
+# Prevent directory listing
+Options -Indexes
+
+# Force download instead of execution for certain file types
+<FilesMatch "\.(exe|bin|bat|sh)$">
+    ForceType application/octet-stream
+    Header set Content-Disposition attachment
 </FilesMatch>
