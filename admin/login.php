@@ -3,7 +3,7 @@
  * Admin Login Page
  */
 
-require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../config/init.php';
 
 // Redirect if already logged in
 if (isAdminLoggedIn()) {
@@ -57,8 +57,8 @@ regenerateCSRFToken();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Kirish</title>
-    <link rel="stylesheet" href="/assets/css/variables.css">
-    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/variables.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/base.css">
     <style>
         body {
             min-height: 100vh;
@@ -91,7 +91,7 @@ regenerateCSRFToken();
 <body>
     <div class="login-card">
         <div class="logo">
-            <a href="/"><?php echo e(getSetting('site_name', 'WebHub.uz')); ?></a>
+            <a href="<?php echo BASE_URL; ?>/"><?php echo e(getSetting('site_name', 'WebHub.uz')); ?></a>
             <p style="color: var(--text-muted); margin-top: var(--space-2);">Admin Panel</p>
         </div>
         
@@ -118,7 +118,7 @@ regenerateCSRFToken();
         </form>
         
         <p style="text-align: center; margin-top: var(--space-6); color: var(--text-muted);">
-            <a href="/">Bosh sahifaga qaytish</a>
+            <a href="<?php echo BASE_URL; ?>/">Bosh sahifaga qaytish</a>
         </p>
     </div>
 </body>

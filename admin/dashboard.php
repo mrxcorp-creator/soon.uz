@@ -3,7 +3,7 @@
  * Admin Dashboard
  */
 
-require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../config/init.php';
 requireAdmin();
 
 $admin = getCurrentAdmin();
@@ -41,8 +41,8 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Boshqaruv</title>
-    <link rel="stylesheet" href="/assets/css/variables.css">
-    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/variables.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/base.css">
     <style>
         body { padding-top: 80px; }
         .admin-nav {
@@ -144,19 +144,19 @@ try {
 <body>
     <nav class="admin-nav">
         <div class="admin-nav-content">
-            <a href="/" style="font-size: var(--text-xl); font-weight: 700; color: var(--primary);">
+            <a href="<?php echo BASE_URL; ?>/" style="font-size: var(--text-xl); font-weight: 700; color: var(--primary);">
                 <?php echo e(getSetting('site_name', 'WebHub.uz')); ?> Admin
             </a>
             
             <ul class="nav-links">
-                <li><a href="/admin/dashboard.php">Bosh sahifa</a></li>
-                <li><a href="/admin/applications.php">Arizalar</a></li>
-                <li><a href="/admin/services.php">Xizmatlar</a></li>
-                <li><a href="/admin/portfolio.php">Portfolio</a></li>
-                <li><a href="/admin/blog.php">Blog</a></li>
-                <li><a href="/admin/users.php">Foydalanuvchilar</a></li>
-                <li><a href="/admin/settings.php">Sozlamalar</a></li>
-                <li><a href="/admin/logout.php" style="color: var(--error);">Chiqish</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/dashboard.php">Bosh sahifa</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/applications.php">Arizalar</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/services.php">Xizmatlar</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/portfolio.php">Portfolio</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/blog.php">Blog</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/users.php">Foydalanuvchilar</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/settings.php">Sozlamalar</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/logout.php" style="color: var(--error);">Chiqish</a></li>
             </ul>
             
             <div style="color: var(--text-secondary);">
@@ -232,7 +232,7 @@ try {
                             </td>
                             <td><?php echo date('d.m.Y H:i', strtotime($app['created_at'])); ?></td>
                             <td>
-                                <a href="/admin/application-view.php?id=<?php echo $app['id']; ?>" class="btn btn-sm btn-outline">Ko'rish</a>
+                                <a href="<?php echo BASE_URL; ?>/admin/application-view.php?id=<?php echo $app['id']; ?>" class="btn btn-sm btn-outline">Ko'rish</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>

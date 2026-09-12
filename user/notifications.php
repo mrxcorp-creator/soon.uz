@@ -3,7 +3,7 @@
  * User Notifications Page
  */
 
-require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../config/init.php';
 requireUser();
 
 $user = getCurrentUser();
@@ -34,8 +34,8 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bildirishnomalar - WebHub.uz</title>
-    <link rel="stylesheet" href="/assets/css/variables.css">
-    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/variables.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/base.css">
     <style>
         body { padding-top: 80px; }
         .user-nav {
@@ -104,18 +104,18 @@ try {
 <body>
     <nav class="user-nav">
         <div class="user-nav-content">
-            <a href="/" style="font-size: var(--text-xl); font-weight: 700; color: var(--primary);">
+            <a href="<?php echo BASE_URL; ?>/" style="font-size: var(--text-xl); font-weight: 700; color: var(--primary);">
                 <?php echo e(getSetting('site_name', 'WebHub.uz')); ?>
             </a>
             
             <ul class="nav-links">
-                <li><a href="/user/dashboard.php">Bosh sahifa</a></li>
-                <li><a href="/user/services.php">Xizmatlar</a></li>
-                <li><a href="/user/applications.php">Arizalarim</a></li>
-                <li><a href="/user/chat.php">Chat</a></li>
-                <li><a href="/user/notifications.php" class="active">Bildirishnomalar</a></li>
-                <li><a href="/user/profile.php">Profil</a></li>
-                <li><a href="/user/logout.php" style="color: var(--error);">Chiqish</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/dashboard.php">Bosh sahifa</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/services.php">Xizmatlar</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/applications.php">Arizalarim</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/chat.php">Chat</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/notifications.php" class="active">Bildirishnomalar</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/profile.php">Profil</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/logout.php" style="color: var(--error);">Chiqish</a></li>
             </ul>
             
             <div style="display: flex; align-items: center; gap: var(--space-3);">

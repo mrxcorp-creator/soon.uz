@@ -3,7 +3,7 @@
  * Admin Logout
  */
 
-require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../config/init.php';
 
 if (isAdminLoggedIn()) {
     logAdminAction($_SESSION['admin_id'], 'Admin logout', 'Successful logout');

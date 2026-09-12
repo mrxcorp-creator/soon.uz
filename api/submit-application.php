@@ -4,7 +4,7 @@
  * Handles contact form submissions
  */
 
-require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../config/init.php';
 
 header('Content-Type: application/json');
 

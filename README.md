@@ -1,132 +1,140 @@
-# WebHub.uz - Raqamli Yechimlar Platformasi
+# WebHub.uz - IT Xizmatlar Platformasi
 
-WebHub.uz - O'zbekistondagi zamonaviy veb-studiya va raqamli xizmatlar platformasi.
+🚀 **Har qanday domenda ishlaydigan professional IT xizmatlar platformasi**
 
-## 🚀 Xususiyatlar
+## ✨ Xususiyatlar
 
 ### Foydalanuvchilar uchun:
-- Zamonaviy va responsive dizayn (Light/Dark tema)
-- Xizmatlar ko'rinishi va buyurtma berish
-- Portfolio (loyihalar) galereyasi
-- Blog maqolalari
-- Onlayn ariza yuborish
-- Real-time chat qo'llab-quvvatlash
-- Shaxsiy kabinet
+- 🌐 Dinamik bosh sahifa (xizmatlar, portfolio, blog, aloqa)
+- 👤 Google OAuth orqali kirish
+- 📝 Ariza yuborish va holatini kuzatish
+- 💬 Real-time chat (admin bilan)
+- 🔔 Bildirishnomalar tizimi
+- 📊 Shaxsiy kabinet
+- 🌓 Light/Dark tema avtomatik
 
 ### Admin panel:
-- Dashboard (statistika)
-- Xizmatlarni boshqarish (CRUD)
-- Arizalarni ko'rish va holatini o'zgartirish
-- Loyihalarni (portfolio) boshqarish
-- Foydalanuvchilarni boshqarish
-- Sozlamalar (sayt, ijtimoiy tarmoqlar)
-- Audit loglari
+- 📈 Dashboard statistika
+- 🛠 Xizmatlarni CRUD boshqarish
+- 📋 Arizalarni ko'rish va holat o'zgartirish
+- 🎨 Portfolio loyihalarni boshqarish
+- ⚙️ Sayt sozlamalari
+- 📝 Blog yuritish
+- 💬 Foydalanuvchilar bilan chat
 
-## 🛠 Texnologiyalar
+### Xavfsizlik:
+- 🔒 CSRF himoya
+- 🔐 bcrypt password hashing
+- 🛡 SQL injection prevention (PDO)
+- 🚫 XSS himoyasi
+- 📁 Uploads papkasida PHP ishlamaydi
+- 🌐 HTTPS majburiy (SSL mavjud bo'lsa)
 
-- **Backend**: PHP 7.4+ (PDO, native)
-- **Database**: MySQL 5.7+ / MariaDB
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Styling**: Custom CSS variables (Light/Dark theme)
-- **Icons**: Font Awesome 6
-- **Security**: CSRF protection, password hashing (bcrypt), SQL injection prevention
+## 🚀 Tezkor O'rnatish
 
-## 📁 Fayl tuzilmasi
+### 1. Fayllarni yuklang
+```bash
+# Barcha fayllarni domainingizning root papkasiga yuklang
+```
+
+### 2. Database yarating
+```sql
+CREATE DATABASE webhub_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+### 3. O'rnatish wizardini ishga tushiring
+```
+https://sizning-domeningiz.com/install.php
+```
+
+### 4. Tayyor!
+- Admin: `https://domeningiz.com/admin/login.php`
+- Default: `admin@webhub.uz` / `admin123`
+
+## 📁 Fayl Tuzilishi
 
 ```
-webhub/
-├── admin/                  # Admin panel sahifalari
-│   ├── dashboard.php
-│   ├── services.php
-│   ├── applications.php
-│   ├── projects.php
-│   ├── settings.php
-│   ├── login.php
-│   └── logout.php
-├── api/                    # API endpointlari
-│   ├── submit-application.php
-│   ├── send-message.php
-│   └── get-messages.php
-├── assets/
-│   ├── css/
-│   │   ├── variables.css   # CSS variables (tema)
-│   │   ├── base.css        # Base styles
-│   │   └── components.css  # Component styles
-│   └── js/
-│       └── main.js         # Asosiy JavaScript
-├── config/                 # Konfiguratsiya fayllari
-│   └── db.php              # DB ulanish (install dan keyin)
+/webhub
+├── config/
+│   ├── init.php          # Dinamik konfiguratsiya (har qanday domen)
+│   ├── db.sample.php     # DB config namuna
+│   └── .htaccess         # Config himoyasi
 ├── includes/
-│   ├── functions.php       # Core funksiyalar
-│   └── migration.php       # Database migration
-├── uploads/                # Yuklangan fayllar
-│   ├── projects/
-│   └── avatars/
-├── index.php               # Bosh sahifa
-├── install.php             # O'rnatish wizardi
-├── privacy.php             # Maxfiylik siyosati
-├── terms.php               # Foydalanish shartlari
-├── .htaccess               # Apache security rules
-└── README.md
+│   ├── functions.php     # Core funksiyalar
+│   └── migration.php     # DB schema
+├── admin/                # Admin panel
+├── user/                 # Foydalanuvchi paneli
+├── api/                  # REST API
+├── assets/
+│   ├── css/              # Styles (light/dark)
+│   └── js/               # JavaScript
+├── uploads/              # Fayl yuklashlar
+├── .htaccess             # Apache security
+├── index.php             # Bosh sahifa
+├── install.php           # O'rnatish wizardi
+└── INSTALL.md            # Batafsil qo'llanma
 ```
 
-## ⚙️ O'rnatish
+## 🔧 Texnik Talablar
 
-### 1. Server talablari
-- PHP 7.4 yoki undan yuqori
-- MySQL 5.7 yoki MariaDB 10.3+
-- Apache with mod_rewrite (yoki Nginx)
+- PHP 8.0+
+- MySQL 5.7+ / MariaDB 10.3+
+- Apache with mod_rewrite
 - PDO MySQL extension
+- GD extension
 
-### 2. O'rnatish jarayoni
+## 🎨 Dizayn Xususiyatlari
 
-1. Fayllarni serverga yuklang
-2. Brauzerda `http://saytingiz.com/install.php` ochiladi
-3. Bosqichma-bosqich ko'rsatmalarga amal qiling:
-   - Server talablarini tekshirish
-   - Ma'lumotlar bazasi sozlamalari
-   - Admin foydalanuvchi yaratish
-   - Yakunlash
+- Glassmorphism effektlari
+- Responsive (mobile-first)
+- CSS Variables theming
+- Scroll animations
+- Gradient backgrounds
 
-### 3. Default admin ma'lumotlari
-- **Email**: admin@webhub.uz
-- **Parol**: admin123 (birinchi kirishdan keyin o'zgartiring!)
+## 📊 Database Tables
 
-## 🔒 Xavfsizlik
+1. `users` - Foydalanuvchilar
+2. `services` - Xizmatlar
+3. `projects` - Portfolio
+4. `applications` - Arizalar
+5. `messages` - Chat xabarlar
+6. `blog_posts` - Blog
+7. `settings` - Sayt sozlamalari
+8. `audit_logs` - Xavfsizlik loglari
 
-- CSRF token himoyasi barcha formalar uchun
-- Password hashing (bcrypt)
-- SQL injection prevention (PDO prepared statements)
-- XSS prevention (htmlspecialchars)
-- File upload validation
-- Session management
-- Audit logging
+## 🔐 Xavfsizlik
 
-## 📊 Database jadvallari
+### Avtomatik himoyalar:
+- ✅ CSRF token har bir formda
+- ✅ Prepared statements (SQL)
+- ✅ Password hashing (bcrypt)
+- ✅ Session security flags
+- ✅ File upload validation
+- ✅ Directory listing disabled
+- ✅ PHP execution disabled in uploads
 
-1. **users** - Foydalanuvchilar (admin, client, manager)
-2. **services** - Xizmat turlari
-3. **projects** - Portfolio loyihalar
-4. **applications** - Mijoz arizalari
-5. **messages** - Chat xabarlari
-6. **blog_posts** - Blog maqolalari
-7. **settings** - Sayt sozlamalari (key/value)
-8. **audit_logs** - Xavfsizlik jurnali
+### Tavsiyalar:
+1. SSL sertifikat o'rnating
+2. Admin parolini o'zgartiring
+3. Database user uchun murakkab parol
+4. `.htaccess` ni production da sozlang
 
-## 🌐 Til
+## 🌍 Har Qanday Domenda Ishlash
 
-Platforma UI to'liq **O'zbek tilida**. 
-Texnik nomlar va kodlar ingliz tilida saqlangan.
+Platforma dinamik ravishda:
+- Base URL ni avtomatik aniqlaydi
+- HTTP/HTTPS ni farqlaydi
+- Domen nomidan qat'i nazar ishlaydi
+- Subdomenlarda ham ishlaydi
 
-## 📝 Litsenziya
+## 📝 Versiya
 
-Proprietary - WebHub.uz
+**v1.0.0** - Production ready release
 
-## 🤝 Aloqa
+## 📞 Yordam
 
-- Website: https://webhub.uz
-- Email: info@webhub.uz
-- Telegram: @webhub_uz
+Muammolar uchun `INSTALL.md` faylini o'qing.
 
 ---
-**WebHub.uz** © 2024 - Raqamli yechimlar studiyasi
+
+**WebHub.uz** © 2024 - Professional IT xizmatlar platformasi

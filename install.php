@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once __DIR__ . '/config/init.php';
 if (file_exists(__DIR__ . '/install.lock')) { die('<h1 style="text-align:center;padding:50px;">O\'rnatish allaqachon yakunlangan.</h1>'); }
 $step = isset($_GET['step']) ? (int)$_GET['step'] : 1;
 $errors = []; $success = '';
@@ -80,6 +80,6 @@ if(isset($_SESSION['admin_ok'])):?><h2 style="margin-bottom:20px;">Yakunlash</h2
 <?php else:
 try{$dsn="mysql:host={$db_host};dbname={$db_name};charset=utf8mb4";$pdo=new PDO($dsn,$db_user,$db_pass);
 $cfg="<?php\ndefine('DB_HOST','".addslashes($db_host)."');\ndefine('DB_NAME','".addslashes($db_name)."');\ndefine('DB_USER','".addslashes($db_user)."');\ndefine('DB_PASS','".addslashes($db_pass)."');\ndefine('SITE_URL','http://'.\$_SERVER['HTTP_HOST']);\ndefine('UPLOAD_DIR',__DIR__.'/uploads');\ndefine('MAX_UPLOAD_SIZE',10485760);\nfunction getDB(){static \$pdo=null;if(\$pdo===null){\$dsn='mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8mb4';\$options=[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC];\$pdo=new PDO(\$dsn,DB_USER,DB_PASS,\$options);}return \$pdo;}\n";
-file_put_contents(__DIR__.'/config/config.php',$cfg);file_put_contents(__DIR__.'/install.lock','installed '.date('Y-m-d H:i:s'));session_destroy();$success='<strong>O\'rnatish yakunlandi!</strong> Endi <a href="/admin/login.php" style="color:var(--primary);">Admin panelga</a> kirishingiz mumkin.';}catch(Exception $e){$errors[]='Xatolik: '.$e->getMessage();}
-?><div class="success" style="text-align:center;"><h3 style="margin-bottom:10px;">Tabriklaymiz!</h3><p><?php echo $success;?></p><p style="margin-top:20px;"><a href="/" class="btn btn-primary" style="display:inline-block;padding:12px 24px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;">Bosh sahifa</a></p></div>
+file_put_contents(__DIR__.'/config/config.php',$cfg);file_put_contents(__DIR__.'/install.lock','installed '.date('Y-m-d H:i:s'));session_destroy();$success='<strong>O\'rnatish yakunlandi!</strong> Endi <a href="<?php echo BASE_URL; ?>/admin/login.php" style="color:var(--primary);">Admin panelga</a> kirishingiz mumkin.';}catch(Exception $e){$errors[]='Xatolik: '.$e->getMessage();}
+?><div class="success" style="text-align:center;"><h3 style="margin-bottom:10px;">Tabriklaymiz!</h3><p><?php echo $success;?></p><p style="margin-top:20px;"><a href="<?php echo BASE_URL; ?>/" class="btn btn-primary" style="display:inline-block;padding:12px 24px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;">Bosh sahifa</a></p></div>
 <?php endif;?></div></body></html>

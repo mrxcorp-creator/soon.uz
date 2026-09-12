@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serverda xatolik - 500</title>
-    <link rel="stylesheet" href="/assets/css/variables.css">
-    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/variables.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/base.css">
     <style>
         body {
             min-height: 100vh;
@@ -37,7 +37,7 @@
         <div class="error-code">500</div>
         <h1>Serverda xatolik</h1>
         <p class="error-message">Kechirasiz, serverda kutilmagan xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko'ring.</p>
-        <a href="/" class="btn btn-primary">Bosh sahifaga qaytish</a>
+        <a href="<?php echo BASE_URL; ?>/" class="btn btn-primary">Bosh sahifaga qaytish</a>
     </div>
 </body>
 </html>

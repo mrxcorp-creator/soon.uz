@@ -3,7 +3,7 @@
  * User Applications Page - View all applications
  */
 
-require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../config/init.php';
 requireUser();
 
 $user = getCurrentUser();
@@ -32,8 +32,8 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arizalarim - WebHub.uz</title>
-    <link rel="stylesheet" href="/assets/css/variables.css">
-    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/variables.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/base.css">
     <style>
         body { padding-top: 80px; }
         .user-nav {
@@ -104,18 +104,18 @@ try {
 <body>
     <nav class="user-nav">
         <div class="user-nav-content">
-            <a href="/" style="font-size: var(--text-xl); font-weight: 700; color: var(--primary);">
+            <a href="<?php echo BASE_URL; ?>/" style="font-size: var(--text-xl); font-weight: 700; color: var(--primary);">
                 <?php echo e(getSetting('site_name', 'WebHub.uz')); ?>
             </a>
             
             <ul class="nav-links">
-                <li><a href="/user/dashboard.php">Bosh sahifa</a></li>
-                <li><a href="/user/services.php">Xizmatlar</a></li>
-                <li><a href="/user/applications.php" class="active">Arizalarim</a></li>
-                <li><a href="/user/chat.php">Chat</a></li>
-                <li><a href="/user/notifications.php">Bildirishnomalar</a></li>
-                <li><a href="/user/profile.php">Profil</a></li>
-                <li><a href="/user/logout.php" style="color: var(--error);">Chiqish</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/dashboard.php">Bosh sahifa</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/services.php">Xizmatlar</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/applications.php" class="active">Arizalarim</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/chat.php">Chat</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/notifications.php">Bildirishnomalar</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/profile.php">Profil</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/user/logout.php" style="color: var(--error);">Chiqish</a></li>
             </ul>
             
             <div style="display: flex; align-items: center; gap: var(--space-3);">
@@ -133,13 +133,13 @@ try {
                 <h1 style="margin-bottom: var(--space-2);">Mening arizalarim</h1>
                 <p style="color: var(--text-secondary);">Barcha yuborilgan arizalar ro'yxati</p>
             </div>
-            <a href="/user/services.php" class="btn btn-primary">Yangi ariza</a>
+            <a href="<?php echo BASE_URL; ?>/user/services.php" class="btn btn-primary">Yangi ariza</a>
         </div>
         
         <?php if (empty($applications)): ?>
         <div class="card" style="text-align: center; padding: var(--space-12);">
             <p style="color: var(--text-muted); margin-bottom: var(--space-6);">Hozircha arizalar yo'q</p>
-            <a href="/user/services.php" class="btn btn-primary">Xizmatlarni ko'rish</a>
+            <a href="<?php echo BASE_URL; ?>/user/services.php" class="btn btn-primary">Xizmatlarni ko'rish</a>
         </div>
         <?php else: ?>
         <div style="display: flex; flex-direction: column; gap: var(--space-4);">
@@ -174,7 +174,7 @@ try {
                 <?php endif; ?>
                 
                 <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
-                    <a href="/user/chat.php" class="btn btn-sm btn-outline">Chat</a>
+                    <a href="<?php echo BASE_URL; ?>/user/chat.php" class="btn btn-sm btn-outline">Chat</a>
                     <?php if ($app['status'] !== 'completed' && $app['status'] !== 'cancelled'): ?>
                     <button class="btn btn-sm btn-secondary" onclick="alert('Ariza holatini o\\'zgartirish uchun admin bilan bog\\'laning')">Bekor qilish</button>
                     <?php endif; ?>

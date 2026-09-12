@@ -3,7 +3,7 @@
  * API: Send Chat Message
  */
 
-require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../config/init.php';
 
 header('Content-Type: application/json');
 

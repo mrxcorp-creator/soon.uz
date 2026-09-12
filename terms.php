@@ -3,7 +3,7 @@
  * Terms of Service Page
  */
 
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/../config/init.php';
 $siteName = getSetting('site_name', 'WebHub.uz');
 ?>
 <!DOCTYPE html>
@@ -12,14 +12,14 @@ $siteName = getSetting('site_name', 'WebHub.uz');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foydalanish shartlari - <?php echo e($siteName); ?></title>
-    <link rel="stylesheet" href="/assets/css/variables.css">
-    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/variables.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_URL; ?>/css/base.css">
 </head>
 <body>
     <nav class="glass" style="padding: var(--space-4) 0;">
         <div class="container flex justify-between items-center">
-            <a href="/" style="font-size: var(--text-xl); font-weight: 700; color: var(--primary);"><?php echo e($siteName); ?></a>
-            <a href="/" class="btn btn-sm btn-outline">Bosh sahifa</a>
+            <a href="<?php echo BASE_URL; ?>/" style="font-size: var(--text-xl); font-weight: 700; color: var(--primary);"><?php echo e($siteName); ?></a>
+            <a href="<?php echo BASE_URL; ?>/" class="btn btn-sm btn-outline">Bosh sahifa</a>
         </div>
     </nav>
 

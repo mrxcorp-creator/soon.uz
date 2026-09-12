@@ -5,7 +5,7 @@
  * Maqsad: Barcha zarur jadvallarni yaratish va boshlang'ich ma'lumotlarni kiritish
  */
 
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/../config/init.php';
 
 // O'rnatish jarayoni faqat install.php orqali boshlanishi kerak, 
 // lekin bu funksiya API orqali chaqiriladi.
